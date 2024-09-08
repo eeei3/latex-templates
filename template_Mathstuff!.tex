@@ -1,0 +1,66 @@
+\documentclass[a4paper]{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{ragged2e}
+\usepackage{blindtext}
+\usepackage[english]{babel} %this is the dictionary you will use
+\usepackage{graphicx,mathdots,chemarr,fancyvrb,comment} %some more packages
+\usepackage{tikz} %some more packages
+%the packages from here on will help with creating a graph
+%tikzpicture
+\usepackage{scalerel}
+\usepackage{pict2e}
+\usepackage{tkz-euclide}
+\usepackage{scalerel}
+\usepackage{pict2e}
+\usepackage{tkz-euclide}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tcolorbox}
+\usepackage{xifthen}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\makeatletter
+\newcommand{\mnewline}{\newline\newline\newline}
+\newcommand{\mline}{\rule{0.5cm}{0.5pt}}
+\newcommand{\proj}[1]{\text{Proj}_{#1}}
+\newcommand{\st}{\ni:}
+\newcommand{\evaline}[2]{\Big|^{#1}_{#2}}
+\newcommand{\nulli}[1]{\text{Null }{#1}}
+\newcommand{\ran}[1]{\text{ran }{#1}}
+\newcommand{\col}[1]{\text{Col }({#1})}
+\newcommand{\re}[1]{\text{Re}({#1})}
+\newcommand{\im}[1]{\text{Im}({#1})}
+\newcommand{\spa}[1]{\text{span}\{{#1}\}}
+%\newcommand{\neproof}[3]{$\text{Let } \epsilon > {#2} \text{ be given}$\\\text{Choose $N = {#1}$\text{ Suppose $n > N  > {#3}$}}}
+\newcommand{\neproof}[3]{ %The first one is without the 3rd argument and the second one is
+	\ifthenelse{\isempty{#3}}{$\text{Let } \epsilon > {#2} \text{ be given}$\\\text{Choose $N = {#1}$\text{ Suppose $n > N$}}}
+	{$\text{Let } \epsilon > {#2} \text{ be given}$\\\text{Choose $N = {#1}$\text{ Suppose $n > N  > {#3}$}}} 
+}
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+	\hskip -\arraycolsep
+	\let\@ifnextchar\new@ifnextchar
+	\array{#1}}
+\makeatother
+\usepackage[letterpaper,left=6mm,includemp=true,marginparwidth=12mm,marginparsep=1mm,reversemarginpar,right=19mm,
+includefoot=true,top=19mm,nohead,footskip=12mm,bottom=6mm]{geometry}
+% Here are the custom commands I have created. They are increadibly retarded
+% mnewline: creates 3 newlines
+% mline: Creates a horizontal line
+% proj: Creates a Proj with a suitable subscript - Takes an argument
+% st: creates a ni and a : as the 'such that'
+% evaline: creates a vertical line for evaluated definite integrals. First argument is upper limit, second is lower. - Takes two arguments
+% nulli: creates a Null (with a whitespace) - Takes an argument
+% col: creates a Col (with a whitespace) - Takes an argument
+% ran: creates a ran (with a whitespace) - Takes an argument
+% re: creates a Re() - Takes an argument
+% im: creates a Im() - Takes an argument
+% sp: creates a span{} - Takes an argument
+% neproof: Creates a cookie cutter N-epsilon proof. First argument set's N's value and second argument sets epsilon greater than value and the third (optional) argument sets the n > N > value. IF YOU DO NOT WANT THE THIRD ARGUMENT YOU NEED AN EMPTY CURLY BRACKET
+\begin{document}
+	\setlength{\parindent}{1cm}
+	Q1\newline
+	\mnewline
+\end{document}

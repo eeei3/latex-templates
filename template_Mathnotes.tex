@@ -1,0 +1,140 @@
+\documentclass[a4paper]{article}
+
+% Imports
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{ragged2e}
+\usepackage{blindtext}
+\usepackage[english]{babel} %this is the dictionary you will use
+\usepackage{graphicx,mathdots,chemarr,fancyvrb,comment} %some more packages
+\usepackage{tikz} %some more packages
+%the packages from here on will help with creating a graph
+%tikzpicture
+\usepackage[many]{tcolorbox}
+\usepackage{wrapfig}
+\usepackage{scalerel}
+\usepackage{pict2e}
+\usepackage{tkz-euclide}
+\usepackage{scalerel}
+\usepackage{pict2e}
+\usepackage{tkz-euclide}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xifthen}
+\graphicspath{ {/home/josh/Documents/texassets/} }
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+%\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{red}{HTML}{ffb3b3}
+\definecolor{redbar}{HTML}{ff0000}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{cyanbar}{HTML}{00bfff}
+\definecolor{cyan}{HTML}{b3f0ff}
+\definecolor{greenbar}{HTML}{00ff00}
+\definecolor{green}{HTML}{8cd98c}
+\definecolor{main}{HTML}{5989cf}    % setting main color to be used
+\definecolor{sub}{HTML}{cde4ff}     % setting sub color to be used
+\tcbset{
+	sharp corners,
+	colback = white,
+	before skip = 0.2cm,    % add extra space before the box
+	after skip = 0.5cm      % add extra space after the box
+}                           % setting global options for tcolorbox
+\makeatletter
+
+
+%My Custom Commands
+\newcommand{\mnewline}{\newline\newline\newline}
+\newcommand{\mline}{\rule{0.5cm}{0.5pt}}
+\newcommand{\proj}[1]{\text{Proj}_{#1}}
+\newcommand{\st}{\ni:}
+\newcommand{\evaline}[2]{\Big|^{#1}_{#2}}
+\newcommand{\nulli}[1]{\text{Null }{#1}}
+\newcommand{\ran}[1]{\text{ran }{#1}}
+\newcommand{\col}[1]{\text{Col }({#1})}
+\newcommand{\re}[1]{\text{Re}({#1})}
+\newcommand{\im}[1]{\text{Im}({#1})}
+\newcommand{\spa}[1]{\text{span}\{{#1}\}}
+%\newcommand{\neproof}[3]{$\text{Let } \epsilon > {#2} \text{ be given}$\\\text{Choose $N = {#1}$\text{ Suppose $n > N  > {#3}$}}}
+\newcommand{\neproof}[3]{ %The first one is without the 3rd argument and the second one is
+	\ifthenelse{\isempty{#3}}{$\text{Let } \epsilon > {#2} \text{ be given}$\\\text{Choose $N = {#1}$\text{ Suppose $n > N$}}}
+	{$\text{Let } \epsilon > {#2} \text{ be given}$\\\text{Choose $N = {#1}$\text{ Suppose $n > N  > {#3}$}}} 
+}
+\newcommand{\infobox}[2]{\begin{InfoBox}
+		\smash{\raisebox{-5pt}{\includegraphics[width=0.77cm,height=0.68cm]{information}}}{\bf #1}\newline\newline
+		{#2}
+\end{InfoBox}}
+\newcommand{\warningbox}[2]{\begin{WarningBox}
+		\smash{\raisebox{-6pt}{\includegraphics[width=0.70cm,height=0.70cm]{warning}}}
+		{\bf #1}\newline\newline
+		{#2}
+\end{WarningBox}}
+\newcommand{\theorybox}[2]{\begin{TheoryBox}
+		\smash{\raisebox{-6pt}{\includegraphics[width=0.70cm,height=0.70cm]{theorem}}}
+		{\bf #1}\newline\newline
+		{#2}
+\end{TheoryBox}}
+\newcommand{\notebox}[2]{\begin{NoteBox}
+		\smash{\raisebox{-6pt}{\includegraphics[width=0.55cm,height=0.70cm]{reminder}}}
+		{\bf #1}\newline\newline
+		{#2}
+\end{NoteBox}}
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+	\hskip -\arraycolsep
+	\let\@ifnextchar\new@ifnextchar
+	\array{#1}}
+\newtcolorbox{InfoBox}{
+	colback = sub, 
+	colframe = main, 
+	boxrule = 0pt, 
+	leftrule = 6pt % left rule weight
+}
+\newtcolorbox{WarningBox}{
+	colback = red, 
+	colframe = redbar, 
+	boxrule = 0pt, 
+	leftrule = 6pt % left rule weight
+}
+\newtcolorbox{TheoryBox}{
+	colback = cyan, 
+	colframe = cyanbar, 
+	boxrule = 0pt, 
+	leftrule = 6pt % left rule weight
+}
+\newtcolorbox{NoteBox}{
+	colback = green, 
+	colframe = greenbar, 
+	boxrule = 0pt, 
+	leftrule = 6pt % left rule weight
+}
+\newtcolorbox{TitleBox}{
+	boxrule = 2pt,
+	rounded corners
+}
+\makeatother
+\usepackage[letterpaper,left=6mm,includemp=true,marginparwidth=12mm,marginparsep=1mm,reversemarginpar,right=19mm,
+includefoot=true,top=19mm,nohead,footskip=12mm,bottom=6mm]{geometry}
+% Here are the custom commands I have created. They are increadibly retarded
+% mnewline: creates 3 newlines
+% mline: Creates a horizontal line
+% proj: Creates a Proj with a suitable subscript - Takes an argument
+% st: creates a ni and a : as the 'such that'
+% evaline: creates a vertical line for evaluated definite integrals. First argument is upper limit, second is lower. - Takes two arguments
+% nulli: creates a Null (with a whitespace) - Takes an argument
+% col: creates a Col (with a whitespace) - Takes an argument
+% ran: creates a ran (with a whitespace) - Takes an argument
+% re: creates a Re() - Takes an argument
+% im: creates a Im() - Takes an argument
+% sp: creates a span{} - Takes an argument
+% neproof: Creates a cookie cutter N-epsilon proof. First argument set's N's value and second argument sets epsilon greater than value and the third (optional) argument sets the n > N > value. IF YOU DO NOT WANT THE THIRD ARGUMENT YOU NEED AN EMPTY CURLY BRACKET
+\begin{document}
+	\setlength{\parindent}{1cm}
+	\begin{center}
+		{\bf \Large Insert Class Name}
+	\end{center}
+	\begin{TitleBox}
+		\begin{center}
+			{\bf Insert Unit Name here}
+		\end{center}
+	\end{TitleBox}
+\end{document}
